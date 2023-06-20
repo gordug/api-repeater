@@ -27,7 +27,7 @@ async fn main() {
             let headers = headers.iter().map(|(k, v)| (k.to_string(), v.to_str().unwrap().to_string())).collect::<Vec<(String, String)>>();
             let response = Response::builder()
                 .status(200)
-                .body(format!("{{\"body\": \"{}\", \"path\": \"{}\", \"headers\": {:?}}}", body, path, headers))
+                .body(format!("{{\"path\": \"{}\", \"headers\": {:?}, \"body\": \"{}\"}}", path, headers, body))
                 .unwrap();
             tracing::info!("response: {:?}", response);
             response
